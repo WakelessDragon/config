@@ -1,2 +1,13 @@
 server:
     port: 9080
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:8761/eureka/
+
+zuul:
+    routes:
+        web1:
+            path: /web1/**
+            serviceId: web
