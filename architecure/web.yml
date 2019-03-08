@@ -1,0 +1,75 @@
+server:
+    port: 9080
+    error:
+        include-stacktrace: on_trace_param
+
+spring:
+    main:
+        web-application-type: reactive
+    application:
+        name: web
+    cache:
+        type: redis
+        redis:
+            key-prefix: architecture:cache
+    redis:
+        host: redis-17315.c60.us-west-1-2.ec2.cloud.redislabs.com
+        port: 17315
+        password: F4GtbZ8h5GtpZ6LqUCZndW2IzkjA3WWn
+
+    session:
+        store-type: redis
+        redis:
+            namespace: "{architecture:session}"
+            flush-mode: on_save
+    mvc:
+        log-resolved-exception: false
+        locale: zh_CN
+    freemarker:
+        prefer-file-system-access: false
+    jackson:
+        serialization:
+            write-dates-as-timestamps: true
+    security:
+        user:
+            password: 123
+            name: arch
+    data:
+        mongodb:
+            uri: mongodb+srv://learning:WNniz6Mi49Zd8eXx@cluster0-h2zit.mongodb.net/test?retryWrites=true
+
+
+management:
+    server:
+        port: 9090
+        ssl:
+            enabled: false
+    endpoints:
+        enabled-by-default: true
+        web:
+            exposure:
+                include: "*"
+    endpoint:
+        shutdown:
+            enabled: true
+        health:
+            enabled: true
+            show-details: always
+        info:
+            enabled: true
+        heapdump:
+            enabled: true
+        metrics:
+            enabled: true
+        mappings:
+            enabled: true
+        loggers:
+            enabled: true
+
+
+eureka:
+    client:
+        serviceUrl:
+            defaultZone: http://localhost:9089/eureka/
+
+debug: true
