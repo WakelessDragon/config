@@ -6,8 +6,6 @@ server:
 spring:
     main:
         web-application-type: reactive
-    application:
-        name: web
     cache:
         type: redis
         redis:
